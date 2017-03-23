@@ -1,0 +1,195 @@
+\documentclass[12pt, twoside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{ngerman}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\lstset{language=Java}
+\usepackage[left=2cm, right=1.5cm, top=3cm, bottom=2cm,]{geometry}
+\usepackage{german,fancyheadings}
+\pagestyle{fancy}
+
+
+
+
+\cfoot{Datenstrukturen und Algorithmen}
+\setlength{\parindent}{0em} 
+\begin{document}
+\title{Datenstrukturen}
+\author{Marcel Benders}
+\maketitle
+\newpage
+
+$n$ = Eingabe, $c$ = Konstante.
+\textit{T(n)} = Laufzeit(funktion) mit der Eingabe der Größe $n$. Wird dann als Funktion von $n$ angesehen. Mithilfe der O-Notation wird nur das Wachstum der Laufwertfunktion $T(n)$ betrachtet. Multiplikative und Additive Konstanten werden weggelassen. \textit{f}=O(\textit{g(n)}) bedeutet, dass \textit{f} höchstens so schnell wie \textit{g} wächst. Das Argument ist die Größe der Eingabe. Der Funktionswert ist die Anzahl der durchgeführten Elementaroperationen.\\
+
+Gegeben sind $alg_1(U)$ und $alg_2(U)$, bei dem Argument $U$ handelt es sich um eine Datenstruktur, die eine Menge zu verarbeitende Objekte darstellt.  $alg_1(U)$, angewandt auf eine Menge $U$ mit $n$ Elementen hat eine Laufzeit $O(n)$ und $alg_2(U)$ hat eine Laufzeit von $O(n^2)$.\\
+
+Bei der Ausführung $alg_1(U)$, $alg_2(U)$, $alg_2(U)$ ergibt sich für eine $n$-elementige Menge $U$ die Laufzeit $O(n) + O(n^2) + O(n^2) = O(n^2)$.\\
+
+\begin{lstlisting}[frame=single]
+if(a > b)
+  alg1(U);
+else if(a > c)
+  x = 0;
+else
+  alg2(U);
+\end{lstlisting}
+
+Für eine $n$-elementige Menge $U$ ist die Laufzeit $T(n)$ = $O(n^2)$. In den verschiedenen Zweigen der Fallunterscheidung treten verschiedene Laufzeiten auf ($O(1)$ - $O(n)$ -  $O(n^2)$), es wird aber der "`worst case"' betrachtet und somit wird als Laufzeit $alg_2(U)$ mit $O(n^2)$ angenommen (die dominantere Operation).\\
+
+\textbf{Klassen der O-Notation:}\\
+
+\begin{tabular}{|l|l|l|}
+\hline
+                  & \textit{Sprechweise} & \textit{Typische Algorithmen}    \\
+\hline
+O(1)              & konstant      &                                         \\
+O($log$ $n$)      & logarithmisch & Suchen auf einer Menge                  \\
+O($n$)            & linear        & Bearbeitung jedes Elementes einer Menge \\
+O($n$ $log^2n$)   &               &                                         \\
+\dots             &               &                            \\
+O($n^2$)          & quadratisch   & primitive Sortierverfahren \\
+O($n^k$), $k\ge2$ & ploynomiell   &                            \\
+\dots             &               &                            \\
+O($2^n$)          & exponentiell  & Backtracking-Algorithmen   \\
+\hline
+\end{tabular}
+
+asymptotisch = größenordnungsmäßig\\
+
+\newpage
+\begin{lstlisting}[frame=single]
+public boolean contains(int[] s, int c)
+{
+  boolean b = false;
+  for(int i = 0; i < s.length; i++)
+    if(s[i] == c)
+      b = true;
+  return b;
+}
+\end{lstlisting}
+
+Möglichkeit 2: {\tiny Schleife bricht ab, wenn der Wert gefunden wird}
+
+\begin{lstlisting}[frame=single]
+public boolean contains(int[] s, int c)
+{
+  int i = 0;
+  while(s[i] != c && i < s.length)
+    i++;
+  if(i < s.length)
+    return true;
+  return false;
+}
+\end{lstlisting}
+$n$ bedeutet hier die größe der Eingabe, also die Länge bzw. Mächtigkeit des Arrays $s$.\\
+$T_{best}(n)$ = O(1)\\
+$T_{worst}(n)$ = O($n$)\\
+
+Durchschnitssverhalten:
+wenn $c$ unter den $n$ Elementen in $s$ vorkommt.
+$T_1(n)=$  $\frac{1}{n}1+$ $\frac{1}{n}2+ \dots + \frac{1}{n}n$ 
+
+d.H. falls $c$ vorkommt, findet man es im Durchschnitt in der Mitte.
+
+Falls $c$ nicht vorkommt, ist $T_2(n)=n$ \\
+\newpage
+
+Möglichkeit 3: {\tiny Binäre Suche (sortierte Liste vorrausgesetzt)}
+\begin{lstlisting}[frame=single]
+public boolean contains(int low, int high, int c)
+{
+  if(low > high)
+    return false;
+  else
+  {
+      m = (low + high) / 2;
+      if(s[m] == c)
+        return true;
+      else if(s[m] < c)
+        return contains(low, m-1, c);
+  }  
+}
+\end{lstlisting}
+
+Der Algorithmus wird zu Anfang mit contains(1, s.length, c) aufgerufen. S wird als globale Variable aufgefasst. Analysiert wird das Verhalten im schlimmsten Fall:
+Sei $T(m)$ die worst-case-Laufzeit von contains, angesetzt auf einen Teil-Array mit $m$ Elmenten. Es gilt:\\
+
+$T(0)=a$
+
+$T(m)=b+T(\frac{m}{2})$ \\
+
+$a$ und $b$ sind Konstanten. $a$ beschreibt die Laufzeit (eine obere Schranke für die Anzahl von Elementaroperationen) falls kein rekursiver Aufruf erfolgt. Im anderen Fall beschreib $b$ die Laufzeit (rekursiver Aufruf finden statt): \\
+
+\begin{eqnarray}
+T(m) & = & b+T( \frac{m}{2})  \\
+     & = & b+b+T( \frac{m}{4}) \\
+     & = & b+b+b+T(\frac{m}{8}) \\
+     & \dots & \\
+     & = & \underbrace{b+b+ \dots +b}_{log\  m\  mal}+a \\
+     & = & b \cdot log_2 m+a \\
+     & = & O(log\ m)
+\end{eqnarray}
+
+Es sind also $T_{worst}(n)=O(log \ n)$ und $T_{best}(n)=O(1)$. \\
+
+Mit der O-Notation $f=O(g)$ kann man sehr einfach ausdrücken, dass eine Funktion $f$ höchstens 
+so schnell wächst wie eine andere Funktion $g$. Folgende andere Notationen zum Vergleich von Funktionen
+gibt es noch: \\
+\begin{itemize}
+\item $f=\Omega(g)$ ("`$f$ wächst mindestens so schnell wie $g$"'), falls $g=O(f)$.
+\item $f=\Theta(g)$ ("`$f$ und $g$ wachen größenordnungsmäßig gleich schnell"'), falls $f=O(g)$ und $g=O(f)$
+\item $f=o(g)$ ("`$f$ wächst langsamer als $g$"'), wenn die Folge $(\frac{f(n)}{g(n)})_{n \in \mathbb{N}}$ eine Nullfolge ist. 
+\item $f=\omega(g)$ ("`$f$ wächst schneller als $g$"'), falls $g=o(f)$. 
+\end{itemize}
+
+Übersicht: \\
+
+\begin{tabular}{| c |  c |}
+\hline
+$f=O(g)$  & $f \le g $ \\
+\hline
+$f=o(g)$ & $f < g$ \\
+\hline
+$f=\Theta(g)$ & $f=g$ \\
+\hline
+$f=\omega(g)$ & $f>g$ \\
+\hline
+$f=\Omega(g)$ & $f\ge g$ \\
+\hline
+\end{tabular}
+
+
+
+\section{Datenstrukturenzeugs}
+
+\begin{tabbing}
+xxxxxxxxxxxx\=xxxxxxxxxxxxxxx\=xxxxxxxxxxxxxxx\=xxxxxxxxxxxxxxxxx\kill
+\textbf{algebra}    \> intset \> \> \\
+\textbf{sorts}      \> intset, int, bool \> \> \\
+\textbf{ops}   \> empty: \>           \> $\to$ intset   \\
+  \> insert:   \> intset$\times$int \> $\to$ intset \\
+  \> delete:   \> intset$\times$int \> $\to$ intset \\
+  \> contains: \> intset$\times$int \> $\to$ bool   \\
+  \> isempty:  \> intset            \> $\to$ bool   \\
+\textbf{sets}  \> intset$=F( \mathbb{Z} )=\{M \subset \mathbb{Z}|M$  endlich\} \> \> \\ 
+\textbf{functions} \\
+ \> empty \> \> $=\emptyset$ \\
+ \> insert$(M, i)$ \> \> $=M\bigcup\{i\}$ \\
+ \> delete$(M,i)$ \> \> $M=\setminus \{i\}$ \\
+ \> contains$(M,i)$ \> \> $
+   =
+   \begin{cases}
+     true  & \text{falls } i \in M \\
+     false    &  \text{sonst} 
+   \end{cases}
+$\\
+ \> isempty$(M)$ \> \> $(M= \emptyset )$ \\
+\textbf{end} intset \\
+\end{tabbing}
+
+
+\end{document}
