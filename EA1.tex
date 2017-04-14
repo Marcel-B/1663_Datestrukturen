@@ -8,6 +8,7 @@
 \usepackage{array}
 \setlength{\parindent}{0em} 
 \newcommand{\N}{\mathbb{N}}
+\newcommand{\M}{$\times$}
 \newtheorem{Sa}{Satz}[subsection]
 \newtheorem{Kor}{Korollar}[subsection]
 \newtheorem{Prop}{Proposition}[subsection]
@@ -17,7 +18,8 @@
 
 \section{Aufgabe 2}
 \begin{tabbing}
-xxxxxxxx \= xxxxxxxxxxxxxxx \= xxxxxxxxxxxxxxxxxxxxxx \=   xxxxxxxxxxxxxxxxxxxxxxxx  \kill
+xxxxxxxx \= xxxxxxxxxxxx \= xxxxxxxxxxxxxxxx \=   xxxxxxxxxxxxxxxxxxxxx  \kill
+Teil (a) \\
 algebra \> rational          \\
 sorts       \> rational, int, bool                                                  \\
 ops         \> add:                 \> rational$\times$rational   \> $\rightarrow$ rational     \\
@@ -30,6 +32,8 @@ ops         \> add:                 \> rational$\times$rational   \> $\rightarro
             \> num2frac:            \> int                        \> $\rightarrow$ rational     \\
             \> frac2num:            \> rational                   \> $\rightarrow$ int          \\
             \> isnum:               \> rational                   \> $\rightarrow$ bool         \\
+            \\
+Teil (b) \\
 sets        \> bool = \{true, false\} \\
             \> int = $\mathbb{Z}$ \\
             \> rational = $\{(a,b)|a \in \text{int}, b \in \text{int} \backslash \{0\}\}$       \\
@@ -60,14 +64,53 @@ functions   \> $multi((x_1, y_1), (x_2, y_2)) = (x_1 \cdot x_2, y_1 \cdot y_2)$ 
             true & \text{falls } x_1 \text{ mod } y_1 = 0 \\
             false & \text{sonst}
             \end{cases}
-            $ \\
-
-
+            $ 
  \end{tabbing}
 
-\section{Aufgabe 1}
+ Teil (c)
+\begin{enumerate}
+\item $add(num2frac(x_1), num2frac(x_2)) = (x_1+x_2, 1)$ 
+\item $nom(num2frac(x_1)) = x_1$ 
+\item $denom(num2frac(x_1)) = 1$
+\item $frac2num(num2frac(x_1)) = x_1$
+\item $isnum(num2frac(x_1)) = true$
+\item $multi(x, y) = multi(y, x)$
+\end{enumerate}
 
-\section{Aufgabe 1}
+\newpage
 
-\section{Aufgabe 1}
+\section{Aufgabe 4}
+$T_1(n) = 1+n \cdot 1 = 1 + n = O(n)$ \\
+$T_2(n) = 1 + n \cdot (1+1+n) ) n^2+2n+n = O(n^2)$ \\
+$T_3(n) = 1 + 2n + \sum_{i=1}^{n}i = O(n^2)$ 
+
+\section{Aufgabe 3}
+\begin{tabbing}
+xxxxxxxx \= xxxxxxxxxxxxxxx \= xxxxxxxxxxxxxxxxxxxxxxx       \=   xxxxxxxxxxxxxxxxxxxxx  \kill
+algebra  \> markt        \\
+sorts    \> markt, stand, position, angebot, einheit, bool, int, real, string                             \\
+ops      \> neuerMarktplatz:\> string\M int\M int\M position \> $\rightarrow$ markt        \\
+         \> neuerStand:     \> rational$\times$rational   \> $\rightarrow$ stand        \\
+         \> fügeStandHinzu: \> rational                   \> $\rightarrow$ markt        \\
+         \> entferneStand:  \> rational$\times$rational   \> $\rightarrow$ markt        \\
+         \> änderePreis:    \> int$\times$int             \> $\rightarrow$ stand        \\
+         \> verkaufe:       \> rational                   \> $\rightarrow$ int          \\
+         \> ergänzeAngebot: \> rational                   \> $\rightarrow$ int          \\
+         \> erhöheVorrat:   \> int                        \> $\rightarrow$ stand        \\
+         \> gesamterUmsatz: \> rational                   \> $\rightarrow$ int          \\
+         \> Abstand:        \> rational                   \> $\rightarrow$ real         \\
+         \> erreichbar:     \> \>$\rightarrow$ bool \\
+sets     \> $markt = \{(name, l, b, eingang, \{st_1, st_2,\dots,st_n\}) | name \in \text{string}, l, b \in \text{int},$ \\
+\> \> $st_1, st_2, \dots,st_n \in stand, eingang \in \text{position}\}$ \\
+            \> $stand = \{(nr, kat, p, \{a_1, a_2,\dots, a_n\}, umsatz) | nr, umsatz \in \text{int}, kat\in \text{kategorie},$ \\
+            \>  \>$ p\in \text{position}, a_1, a_2,\dots, a_n\in \text{angebot}\}$\\
+            \> $position = \{(x, y) | x, y \in \text{int}\}$ \\
+            \> $angebot = \{(menge, preis, ware, e) | menge, preis \in \text{int}, ware \in \text{string}, e \in \text{einheit} \}$ \\
+            \> $einheit = \{obst/gemüse, fleisch, fisch, eier, käse, brot\}$ \\
+ 
+     
+functions   \> $neuerMarktplatz(name, l, b, position) = (n, l, b, (x, y))$                 \\
+
+\end{tabbing}
+
 \end{document}
