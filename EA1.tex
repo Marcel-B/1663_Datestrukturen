@@ -1,0 +1,73 @@
+\documentclass[12pt, twoside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{ngerman}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\setlength{\parindent}{0em} 
+\newcommand{\N}{\mathbb{N}}
+\newtheorem{Sa}{Satz}[subsection]
+\newtheorem{Kor}{Korollar}[subsection]
+\newtheorem{Prop}{Proposition}[subsection]
+\newtheorem{Def}{Definition}[subsection]
+\begin{document}
+
+
+\section{Aufgabe 2}
+\begin{tabbing}
+xxxxxxxx \= xxxxxxxxxxxxxxx \= xxxxxxxxxxxxxxxxxxxxxx \=   xxxxxxxxxxxxxxxxxxxxxxxx  \kill
+algebra \> rational          \\
+sorts       \> rational, int, bool                                                  \\
+ops         \> add:                 \> rational$\times$rational   \> $\rightarrow$ rational     \\
+            \> multi:               \> rational$\times$rational   \> $\rightarrow$ rational     \\
+            \> rproc:               \> rational                   \> $\rightarrow$ rational     \\
+            \> isequal:             \> rational$\times$rational   \> $\rightarrow$ bool         \\
+            \> frac:                \> int$\times$int             \> $\rightarrow$ rational     \\
+            \> nom:                 \> rational                   \> $\rightarrow$ int          \\
+            \> denom:               \> rational                   \> $\rightarrow$ int          \\
+            \> num2frac:            \> int                        \> $\rightarrow$ rational     \\
+            \> frac2num:            \> rational                   \> $\rightarrow$ int          \\
+            \> isnum:               \> rational                   \> $\rightarrow$ bool         \\
+sets        \> bool = \{true, false\} \\
+            \> int = $\mathbb{Z}$ \\
+            \> rational = $\{(a,b)|a \in \text{int}, b \in \text{int} \backslash \{0\}\}$       \\
+     
+functions   \> $multi((x_1, y_1), (x_2, y_2)) = (x_1 \cdot x_2, y_1 \cdot y_2)$                 \\
+            \> $add((x_1, y_1), (x_2, y_2)) = (x_1 \cdot y_2 + x_2 \cdot y_1, y_1 \cdot y_2)$   \\
+            \> $rproc((x_1, y_1))=\begin{cases}
+            (x_1, y_1) & \text{falls } x_1 \not = 0 \\
+            \text{undefiniert} & \text{sonst}            
+            \end{cases}$ \\
+            \> $isequal((x_1, y_1), (x_2, y_2)) = 
+            \begin{cases}
+            true & x_1 \cdot y_2 = x_2 \cdot y_1 \\
+            false & \text{sonst}
+            \end{cases}$ \\
+            \> $frac(x_1, x_2) = \begin{cases}
+            (x_1, x_2) & \text{falls } x_2 \not = 0 \\
+            \text{undefiniert} & \text{sonst}
+            \end{cases}$ \\
+            \> $denom((x_1, y_1)) = y_1$ \\
+            \> $nom((x_1, y_1)) = x_1$ \\
+            \> $num2frac(x_1) = (x_1, 1)$ \\
+            \> $frac2num((x_1, y_1)) = \begin{cases}
+            \frac{x_1}{y_1} & \text{falls }  x_1  \text{ mod }  y_1 = 0 \\
+            \text{undefiniert}     & \text{sonst}
+            \end{cases}$ \\
+            \> $isnum((x_1, y_1)) = \begin{cases}
+            true & \text{falls } x_1 \text{ mod } y_1 = 0 \\
+            false & \text{sonst}
+            \end{cases}
+            $ \\
+
+
+ \end{tabbing}
+
+\section{Aufgabe 1}
+
+\section{Aufgabe 1}
+
+\section{Aufgabe 1}
+\end{document}
