@@ -16,6 +16,7 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\M}{$\times$}
+\newcommand{\rA}{$\rightarrow $ }
 \lstset{language=C++}
 \lstset{backgroundcolor = \color{lightgray}, xleftmargin = 0.5cm, framexleftmargin = 1em}
 \pagestyle{fancy}
@@ -33,7 +34,22 @@
 \section*{EA2 - Aufgabe 2}
 \section*{EA2 - Aufgabe 3}
 \section*{EA2 - Aufgabe 4 - Priority Queue} 
-
+\begin{tabbing}
+xxxxxxxxx \= xxxxxxxxxxxx \= xxxxxxxxxxxxxxxx \= xxxxxxxx \= \kill
+\textbf{algebra} \> pqueue \\
+\textbf{sorts}  \> pqueue pqelem elem priority bool \\
+\textbf{ops}    \> empty        \> :                        \> \rA  pqueue \\
+                \> front        \> : pqueue                 \> \rA elem \\
+                \> enqueue      \> : pqueue\M pqelem    \> \rA pqueue \\ 
+                \> dequeue      \> : pqueue                 \> \rA pqueue \\
+                \> isempty      \> : pqueue                 \> \rA bool \\
+                \> createpqelem \> : priority\M elem        \> \rA pqelem \\
+\textbf{sets}   \> pqueue \> $= \{<a_1, \dots , a_n>|n \ge 0, a_i = (p_i, e_i) \in pqelem, p_i + 1 \le p_i, i \in \{1, \dots, n\} \}$ \\
+                \> pqelem \> $= \{(p_i, q_i)|i \ge 0, i < n\}   = priority \times elem $ \\
+                \> priority \> = $p$ \\
+\textbf{functions} \> empty \>                      \> = <> \\
+                \> front($<a_1, \dots , a_n>$) \>   \> = $\begin{cases} e_1 & 3 \\ e_2 & 4 \end{cases}$ \\
+\end{tabbing}
 
 \section*{EA2 - Aufgabe 1}
 
