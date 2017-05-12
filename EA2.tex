@@ -17,7 +17,7 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\M}{$\times$}
 \newcommand{\rA}{$\rightarrow $ }
-\lstset{language=C++}
+\lstset{language=Pascal}
 \lstset{backgroundcolor = \color{lightgray}, xleftmargin = 0.5cm, framexleftmargin = 1em}
 \pagestyle{fancy}
 \setlength{\parindent}{0em}
@@ -31,11 +31,120 @@
 \begin{document}
 
 \section*{EA2 - Aufgabe 1}
-\section*{EA2 - Aufgabe 2}
-\section*{EA2 - Aufgabe 3}
+\subsection*{a - Auswahl der Datenstrukturen}
+\begin{itemize}
+\item \textbf{Eingabefolge} - Hier kann eine \textit{Queue} verwendet werden. Die Reihenfolge bleibt erhalten, man kann nur von vorne zugreifen. 
+Die kann auch u.U. Fehler vermeiden. Die Laufzeit ist mit $O(1)$ zu verzeichnen.
+\item \textbf{Übersicht} - Hier bietet sich ein zweidimensionales \textit{Array} an. Dieses kann wie eine Tabelle angeordnet werden, 
+Dimension 1 für die Zeilen (terminal), Dimension 2 für die Spalten (nicht terminal). In den Zellen sind dann Zeiger auf Regeln.  Die Laufzeit ist mit $O(1)$ zu verzeichnen.
+\item \textbf{Regeln} - Dafür bietet sich eine \textit{doppelt verkettete Liste} an. Dies hat den Vorteil, das die Regeln von vorne und von hinten abgearbeitet werden können.
+\item \textbf{Zustand Regelabarbeitung} - Die wird mit einem \textit{Stack} realisiert. Hier kann der letzte Zustand immer festgehalten werden und bei Bedarf sofort
+ zugegriffen werden. Ist der Stack leer, sind die Regeln abgearbeitet worden. Auch hier gitl $O(1)$.
+\end{itemize}
+
+\subsection*{b - Verwendete Operationen}
+\begin{itemize}
+\item Mit der Operation \textit{empty} lassen sich Queue, doppelt verkettete Liste und Stack erzeugen. Das zweidimensionale Array muss \textit{initialisiert} werden. 
+\item Mit \textit{enqueue} wird die Zeichenfolge in die Queue gegeben, mit \textit{front} kann auf das erste Element zugegriffen werden, mit \textit{dequeue} wird es dann entfernt.
+\item Das Array wird über die \textit{Indizes} kontrolliert. Gibt es für eine Kombination von terminal und nicht termial keine Regel, gibt es eine Fehlermeldung.
+\item Bei der verkettenten Liste werden die Regeln mit \textit{insert} hinzugefügt. Mit \textit{next} und \textit{previous} wird die Liste durchlaufen. Die Operation \textit{eol} wird benötigt
+um festzustellen, ob man am Ende der Liste angekommen ist, \textit{bol} prüft ob man sich am Anfang der Liste befindet. 
+\item Vom Stack wird die Operation \textit{push} benötigt, wenn ein Zustand festgehalten werden muss.  Dieser wird dann auf den Stack abgelegt. Mit \textit{top} bekommt man die Referenz auf den letzten
+Zustand, mit \textit{pop} entfernt man ihn, wenn der Zustand abgearbeitet worden ist.  
+\end{itemize}
+
+
+\newpage
+\section*{EA2 - Aufgabe 2 - 3d Algebra}
+\begin{tabbing}
+xxxxxxxxx \= xxxxxxxxxxx \= xxxxxxxxxxxxxx \= xxxxxxxx \= \kill
+\textbf{algebra} \> 3d \\
+\end{tabbing}
+
+\subsection*{a}
+\begin{tabbing}
+xxxxxxxxx \= xxxxxxxxxxx \= xxxxxxxxxxxxxx \= xxxxxxxx \= \kill
+\textbf{sorts}  \> point, triangle, triangles, vector, bool, surface, volumne, int \\
+\textbf{sets}   \> point    \> $= \{(x,y,z)|x,y,z \in \R \}$ \\
+                \> vector   \> = point \\
+                \> triangle \> $= \{(a, b, c)|a,b,c \in \text{point }, a \not= b \not= c \not= a, \neg \text{collin}(a,b,c))   \}$\\
+                \> triangles \> $= \{ T\subset \text{triangle }||T| < \infty \}$ \\
+                \> surface  \> $= \{S \in \text{triangles }| \dots  \}$ \\
+                \> volumne  \> $= \{V \in \text{surface }| \dots \} $
+\end{tabbing}
+
+\subsection*{b}
+
+body $\in \{\text{volumne, surface}\}$
+\begin{tabbing}
+xxxxxxxxx   \= xxxxxxxxxxxx     \= xxxxxxxxxxxxxxxxxxxxx    \= xxxxxxxx \= \kill
+\textbf{ops} \> collin          \> : point\M point\M point  \> \rA bool \\
+            \> createPoint      \> : real\M real\M real     \> \rA point \\
+            \> createTriangle   \> : point\M point\M point  \> \rA triangle $\cup \{\perp\} $   \\
+            \> adjacent         \> : triangle\M triangle   \> \rA bool \\
+            \> touch            \> : triangle\M triangle    \> \rA bool \\
+            \> createSurface    \> : triangles              \> \rA surface $\cup \{\perp\}$     \\
+            \> createVolumne    \> : triangles              \> \rA volumne $\cup \{\perp\}$          \\ 
+            \> size             \> : body                   \> \rA int \\
+            \> bbox             \> : body                   \> \rA point\M point \\
+            \> translate        \> : body\M vector          \> \rA body \\
+            \> createCube       \> : point\M point          \> \rA volumne $\cup \{\perp\}$ \\
+\end{tabbing}
+
+
+\subsection*{c}
+
+\begin{tabbing}
+xxxxxxxxx \= xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\= xxxxxxxx \= \kill
+functions \> 
+             collin($a,b,c$)                    \> \\
+          \> createPoint($x, y, z$)             \> $= (x, y, z)$ \\           
+          \> createTriangle($a, b, c$)          \> $= \begin{cases}\{(a, b, c) & a \not= b \not= c \not= a \wedge \neg \text{collin}(a, b, c) \\ \perp &  \text{sonst} \end{cases}$ \\        
+          \> adjacent($(a_1, a_2, a_r), (b_1, b_2, b_3)$) \> $= \exists i, j, k, l \in \{1, 2, 3\}, i \not= j, k \not= l :$ \\ 
+          \>                                                \>   $(a_i = b_k \wedge a_j = b_l) \vee (a_i = b_i \wedge a_j = b_k)$ \\     
+          \> touch($(a_1, a_2, a_3), (b_1, b_2, b_3)$) \> $=\exists ! (i, j) \in \{1, 2, 3\}^2 : a_i = b_i$ \\
+          \> size($\{t_1, \dots , t_n\}$)       \> $=n$ \\
+\end{tabbing}
+
+\newpage
+\section*{EA2 - Aufgabe 3 - Datentyp für Mengen}
+Zu definieren ist eine passende Implementierung für einen Datentyp \textit{Menge}, welcher eine Laufzeit von $O(1)$ hat.
+\subsection*{a}
+Um eine Laufzeit von $O(1)$ zu bekommen, bietet sich ein Array an. Es hat eine feste Größe von $n \in \N$, man kann jedes Element mit einem Index direkt ansprechen.
+Fügt man ein Element ein, kann direkt geprüft werden ob der Platz frei ist, das gleiche gilt für die Prüfung, ob ein Element vorhanden ist. Das einzige Problem bereitet, laut 
+Aufgabenstllung, das zufällige Entfernen. Hieraus kann sich, im worst case (leeres Array), eine Laufzeit von $O(n)$ ergeben.
+
+Zu lösen ist dieses Problem mit einem \textit{Stack}. Wird ein Element in das Array gegeben, wird der Index auf dem Stack notiert. Soll ein Element aus dem Array entfernt werden,
+nimmt man den Index vom Stack und enternt das dazugehörige Element aus dem Array. So ergibt sich bei remove ebenfalls eine Laufzeit von $O(1)$.
+
+\subsection*{b}
+Die passenden Algorithmen:
+
+\begin{lstlisting}
+algorithm contains(elem)
+ if array[elem] = elem then
+    return true
+ else
+    return false
+
+algorithm insert(elem)  
+  if contains(elem) = false then
+      array[elem] := elem
+      stack.push(elem)
+      
+
+algorithm remove()
+   if stack.isempty() = false then
+    elem := stack.top()
+    stack.pop()
+    array[elem] := null
+    return elem;
+\end{lstlisting}
+
+\newpage
 \section*{EA2 - Aufgabe 4 - Priority Queue} 
 \begin{tabbing}
-xxxxxxxxx \= xxxxxxxxxxxx \= xxxxxxxxxxxxxxxx \= xxxxxxxx \= \kill
+xxxxxxxxx \= xxxxxxxxxxx \= xxxxxxxxxxxxxx \= xxxxxxxx \= \kill
 \textbf{algebra} \> pqueue \\
 \textbf{sorts}  \> pqueue pqelem elem priority bool \\
 \textbf{ops}    \> empty        \> :                        \> \rA  pqueue \\
@@ -44,14 +153,20 @@ xxxxxxxxx \= xxxxxxxxxxxx \= xxxxxxxxxxxxxxxx \= xxxxxxxx \= \kill
                 \> dequeue      \> : pqueue                 \> \rA pqueue \\
                 \> isempty      \> : pqueue                 \> \rA bool \\
                 \> createpqelem \> : priority\M elem        \> \rA pqelem \\
-\textbf{sets}   \> pqueue \> $= \{<a_1, \dots , a_n>|n \ge 0, a_i = (p_i, e_i) \in pqelem, p_i + 1 \le p_i, i \in \{1, \dots, n\} \}$ \\
+\textbf{sets}   \> pqueue \> $= \{<a_1, \dots , a_n>|n \ge 0, a_i = (p_i, e_i) \in pqelem, p_i + 1 \le p_i, \forall i \in \{1, \dots, n\} \}$ \\
                 \> pqelem \> $= \{(p_i, q_i)|i \ge 0, i < n\}   = priority \times elem $ \\
                 \> priority \> = $p$ \\
 \textbf{functions} \> empty \>                      \> = <> \\
-                \> front($<a_1, \dots , a_n>$) \>   \> = $\begin{cases} e_1 & 3 \\ e_2 & 4 \end{cases}$ \\
+                \> front($<a_1, \dots , a_n>$) \>   \> = $\begin{cases} e_1 & a_1 = (p_1, e_n) \wedge n > 0 \\
+                                                                       \text{undefiniert} &  \text{sonst} \end{cases}$ \\
+                \> enqueue($<a_1, \dots , a_n>, a_x$) \>        \> = $\begin{cases} <a_x> & n = 0 \\ <a_1, \dots , a_i, a_x, a_{i+x}, \dots,  a_n>  & a_i=(p_i, e_i) \\
+                                                                                & \wedge p_i \ge p_x > p_i+1 \end{cases}$ \\
+                \> dequeue($<a_1, \dots , a_n>$) \> \> = $\begin{cases}<a_2, \dots , a_n> & n > 0 \\ 
+                                                                    \text{undefiniert} & \text{sonst} \end{cases} $\\
+                \>isempty($<a_1, \dots , a_n>$) \>  \> = $\begin{cases} true & n = 0 \\ false & \text{sonst}\end{cases}$ \\
+                \>createpqelem($p, e$)\>            \> = $(p, e)$ \\
 \end{tabbing}
 
-\section*{EA2 - Aufgabe 1}
 
 %\begin{figure}[h]
 %	\centering
