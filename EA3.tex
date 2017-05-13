@@ -8,10 +8,12 @@
 \usepackage{array}
 \usepackage{german}
 \usepackage{tikz}
+\usepackage{subfigure} 
 \usepackage{fancyhdr}
 \usepackage{eurosym}
 \usepackage[left=2cm, right=2cm, top=3cm, bottom=2cm]{geometry}
 \usepackage{listings}
+\usepackage{hyperref}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Z}{\mathbb{Z}}
@@ -31,6 +33,144 @@
 \begin{document}
 
 \section*{EA3 - Aufgabe 1}
+
+\section*{EA3 - Aufgabe 2}
+
+\subsection*{a}
+Die hinzugefügten Knoten sind grün gefüllt, die aus der Balance geratenen Knoten sind
+rot umrandet.
+
+\begin{figure}[h]
+	\centering
+	\scalebox{.5}{\input{ea3_2_abb1}}
+	\caption{Knoten 27 hinzugefügt}
+	\label{img:abb1}
+\end{figure}
+
+Dem Baum in Abbildung \ref{img:abb1} wird die 27 hinzugefügt. Am Knoten 30 sowie Knoten 20 ist der Baum nicht mehr
+in Balance. Der von unten aus erste Knoten, der mit Nummer 30, muss rotiert werden. Da Fall
+a2.2 vorliegt, muss doppelt rotiert werden. Das Ergebnis ist in der nächsten Abbildung zu sehen.  
+
+
+\begin{figure}[h]
+	\centering
+	\scalebox{.5}{\input{ea3_2_abb2}}
+	\caption{Knoten 26 hinzugefügt}
+	\label{fig:abb2f}
+\end{figure}
+
+Nachdem der die 26 hinzugefügt wurde, ist der Baum am Knoten 20 unbalanciert. Die einzelnen
+Teilbäume sind in der Abbildung \ref{fig:abb2f} durch Kreise markiert. Der Fall a2.1 ist 
+eingetreten. Es muss wieder doppelt rotiert werden; das Ergebnis zeigt Abbildung \ref{fig:abb3b}.
+
+\begin{figure}[h]
+	\centering
+	\scalebox{.5}{\input{ea3_2_abb3}}
+	\caption{Knoten 43 hinzugefügt}
+	\label{fig:abb3b}
+\end{figure}
+
+Knoten 41 wurde hinzugefügt, der Teilbaum 35 ist unbalanciert. 
+\newpage
+
+Der Knoten 43 wurde eingefügt, an den Knoten 35 und 45 stimmt die Balance nicht. Es wird wieder
+der untere, Knoten 45, doppelt rotiert (Fall a2.2).
+
+\begin{figure}[h]
+	\centering
+	\scalebox{.5}{\input{ea3_2_abb4}}
+	\caption{Knoten 41 hinzugefügt}
+	\label{fig:abb4b}
+\end{figure}
+
+Die 41 wurde eingefügt, die Balance am Teilbaum 35 stimmt nicht mehr. Es muss nach Fall a2.2 doppelt
+rotiert werden. Somit erhalten wir nach allen Einfügeoperationen den fertigen ausbalancierten
+Baum in Abbildung \ref{fig:abb5b}.
+\begin{figure}[h]
+	\centering
+	\scalebox{.5}{\input{ea3_2_abb5}}
+	\caption{Fertiger balancierter Baum}
+	\label{fig:abb5b}
+\end{figure}
+
+
+\newpage
+
+\subsection*{b}
+Die zu löschenden Knoten sind Rot gefüllt, die aus der Balance geratenen Knoten sind
+rot umrandet.
+
+\begin{figure}[h]
+	\centering
+	\scalebox{.5}{\input{ea3_2_abb6}}
+	\caption{Knoten 150 löschen}
+	\label{fig:abb6b}
+\end{figure}
+Knoten 150 wird gelöscht. Knoten 130 ist aus der Balance geraten. Eine einfache Rotation reicht.
+
+\begin{figure}[h]
+	\centering
+	\scalebox{.5}{\input{ea3_2_abb7}}
+	\caption{Knoten  löschen}
+	\label{fig:abb7b}
+\end{figure}
+
+Nach der Rotation ist Knoten 90 nicht mehr balanciert, nach b1.1 muss doppelt rotiert werden.
+
+\begin{figure}[h]
+	\centering
+	\scalebox{.5}{\input{ea3_2_abb8}}
+	\caption{Knoten 80 löschen}
+	\label{fig:abb8b}
+\end{figure}
+
+Als nächstes wird Knoten 80 gelöscht, dadurch gerät Knoten 90 aus der Balance. Es ist der
+Fall b3, eine einfache Rotation.
+
+\begin{figure}[h]
+	\centering
+	\scalebox{.5}{\input{ea3_2_abb9}}
+	\caption{Knoten 130 löschen}
+	\label{fig:abb9b}
+\end{figure}
+
+\newpage
+
+Knoten 130 wird gelöscht, dies hat zur Folge das Knoten 120 nicht mehr balanciert ist. Es handelt
+sich um Fall b1, es wird doppelt rotiert.
+
+
+\begin{figure}[h]
+	\centering
+	\scalebox{.5}{\input{ea3_2_abb10}}
+	\caption{Knoten 90 löschen}
+	\label{fig:abb10b}
+\end{figure}
+
+Nachdem Knoten 90 gelöscht wurde, ist der Baum noch balanciert.
+
+\begin{figure}[h]
+	\centering
+	\scalebox{.5}{\input{ea3_2_abb11}}
+	\caption{Knoten 120 löschen}
+	\label{fig:abb11b}
+\end{figure}
+
+Nach der Löschung von Knoten 120, ist Knoten 70 nich mehr in Balance. Es ist Fall b3 eingetreten,
+es muss einfach rotiert werden.
+
+\newpage
+
+Wir erhalten den fertig balancierten Baum aus Abbildung \ref{fig:abb12b}.
+
+\begin{figure}[h]
+	\centering
+	\scalebox{.5}{\input{ea3_2_abb12}}
+	\caption{Fertiger balancierter Baum}
+	\label{fig:abb12b}
+\end{figure}
+
+
 
 \section*{EA3 - Aufgabe 3}
 Als erstes nummerieren wir zur Hilfe die Buchstaben durch.
@@ -91,7 +231,80 @@ Behälter        & Name  \\
 \hline
 \end{tabular}
 
-\section*{EA3 - Aufgabe 2}
+\newpage
+
 \section*{EA3 - Aufgabe 4}
+\subsection*{a}
+In den folgenden Abbildungen sind die Jeweiligen Bäume nach der Einfügung und Umstrukturierung
+aufgezeigt.
+
+\begin{figure}[h] 
+	\centering
+    \subfigure[+3]{\scalebox{.5}{\input{ea3_4_abb1}}} 
+	\hspace{3cm}
+    \subfigure[+4]{\scalebox{.5}{\input{ea3_4_abb2}}} 
+	\hspace{3cm}
+	\subfigure[1 eingefügt]{\scalebox{.5}{\input{ea3_4_abb3}}}
+%\caption{Titel unterm gesamten Bild} 
+\end{figure} 
+
+
+\begin{figure}[h] 
+	\centering
+    \subfigure[10 eingefügt]{\scalebox{.5}{\input{ea3_4_abb4}}} 
+	\hspace{1cm}
+    \subfigure[19 eingefügt]{\scalebox{.5}{\input{ea3_4_abb5}}} 
+	\hspace{1cm}
+	\subfigure[2 eingefügt]{\scalebox{.5}{\input{ea3_4_abb6}}}
+%\caption{Titel unterm gesamten Bild} 
+\end{figure} 
+
+
+\begin{figure}[h] 
+	\centering
+    \subfigure[2 eingefügt]{\scalebox{.5}{\input{ea3_4_abb7}}} 
+	\hspace{2cm}
+    \subfigure[5 eingefügt]{\scalebox{.5}{\input{ea3_4_abb8}}} 
+%\caption{Titel unterm gesamten Bild} 
+\end{figure} 
+
+
+\begin{figure}[h] 
+	\centering
+    \subfigure[7 eingefügt]{\scalebox{.5}{\input{ea3_4_abb9}}} 
+	\hspace{2cm}
+    \subfigure[16 eingefügt]{\scalebox{.5}{\input{ea3_4_abb10}}} 
+%\caption{Titel unterm gesamten Bild} 
+\end{figure} 
+
+
+
+\newpage
+
+
+\subsection*{b}
+
+
+\begin{figure}[h] 
+	\centering
+    \subfigure[19 gelöscht]{\scalebox{.5}{\input{ea3_4_abb11}}} 
+	\hspace{1cm}
+    \subfigure[16 gelöscht]{\scalebox{.5}{\input{ea3_4_abb12}}} 
+%\caption{Titel unterm gesamten Bild} 
+\end{figure} 
+
+\begin{figure}[h] 
+	\centering
+    \subfigure[10 gelöscht]{\scalebox{.5}{\input{ea3_4_abb13}}} 
+	\hspace{1cm}
+    \subfigure[8 gelöscht]{\scalebox{.5}{\input{ea3_4_abb14}}} 
+%\caption{Titel unterm gesamten Bild} 
+\end{figure} 
+
+\begin{figure}[h] 
+	\centering
+    \subfigure[7 gelöscht]{\scalebox{.5}{\input{ea3_4_abb15}}} 
+%\caption{Titel unterm gesamten Bild} 
+\end{figure} 
 
 \end{document}
