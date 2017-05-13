@@ -34,6 +34,24 @@
 
 \section*{EA3 - Aufgabe 1}
 
+\subsection*{a}
+Das kleinste Element erreicht man, indem man soweit wie möglich im Baum nach links geht.
+Dies ist in $O(log n)$ zu erreichen. Um zum zweitkleinsten Element zu kommen beachten wir zwei Fälle:
+
+\begin{itemize}
+\item Fall 1: Ist das kleinste Element ein Blatt, so ist der Vater das zweitkleinste Element. Die 
+Laufzeit beträgt $O(log n)$.
+\item Fall 2: Das kleinste Element ist ein Knoten. Da der Baum balanciert ist, ist der rechte
+Sohn des kleinsten Elements das zweitkleinste Element des Baums. Die Laufzeit beträgt auch hier $O(log n)$.
+\end{itemize}
+
+
+\subsection*{b}
+Die Knoten müssen eine zusätzliche Information entahlten. Es handelt sich um die Anzahl
+der Söhne zur linken Seite. 
+
+\newpage
+
 \section*{EA3 - Aufgabe 2}
 
 \subsection*{a}
@@ -170,6 +188,7 @@ Wir erhalten den fertig balancierten Baum aus Abbildung \ref{fig:abb12b}.
 	\label{fig:abb12b}
 \end{figure}
 
+\newpage
 
 
 \section*{EA3 - Aufgabe 3}
