@@ -29,12 +29,10 @@
 \newtheorem{Def}{Definition}[subsection]
 \lhead{Marcel Benders}
 \rhead{Matrikelnummer: 5431760}
-\cfoot{Datenstrukturen - KE 4}
+\cfoot{Datenstrukturen - KE 5}
 \begin{document}
 
-\newpage
-
-\section*{EA4 - Aufgabe 1}
+\section*{EA5 - Aufgabe 1}
 
 \subsection*{a}
 Es ist der Aufrufbaum zu konstruieren. Dieser ist in Abbildung \ref{img:abb1} zu sehen.
@@ -54,17 +52,11 @@ Gesamtlaufzeit von $O(n\text{log}(n))$ was keine Verbesserung zum normalen Merge
 \section*{EA4 - Aufgabe 2}
 
 \subsection*{a}
-Dazu empfiehlt sich das, aus dem Kurstext vorgestellte, Heap-Sort Verfahren. Es hat ein besseres \textit{worst-case} 
-Verhalten - $O(n \cdot \text{log}(n))$ -  als Quicksort und ist
+Dazu empfiehlt sich das Heap-Sort Verfahren. Es hat ein besseres \textit{worst-case} Verhalten als Quicksort und ist
 \textit{in situ}.
 
 \subsection*{b}
-\begin{figure}[h]
-	\centering
-	\scalebox{.5}{\input{ea4_2_abb1}}
-	\caption{Ergebnisbaum}
-	\label{img:abb2}
-\end{figure}
+Bild
 
 \subsection*{c}
 Die Aufruftiefe beträgt $K \cdot \text{log}(n)$. Quicksort hat somit $O(n \cdot \text{log}(n))$. Das 
@@ -82,49 +74,5 @@ Laufzeit von $O(n)$ hat. Wir haben eine Gesamtlaufzeit von $O(k+n+n+n)=O(n)$.
 \subsection*{b}
 Diese Laufzeit ist möglich, da es die Schranke $k << n$ gibt. Die untere Schranke $\Omega (n  \cdot \text{log}(n))$ gilt für nicht eingeschränkte Sortierverfahren.
 
-\newpage
-
-\section*{EA4 - Aufgabe 4}
-\subsection*{a}
-
-\begin{tabular}{ l | l | l | l | l}
-i		& m		& p			& b			& s \\
-\hline
-5 & 1 & 5 & true &  [3 - 5 - 2 - 3 - 1 - 4] \\
-5 & 1 & 5 & false & [3 - 5 - 2 - 3 - 1 - 4] \\
-4 & 3 & 4 & true &  [3 - 5 - 2 - 3 - 1 - 4] \\
-4 & 3 & 5 & true &  [3 - 5 - 2 - 1 - 1 - 4] \\
-3 & 2 & 3 & true &  [3 - 5 - 1 - 1 - 3 - 4] \\
-3 & 2 & 4 & true &  [3 - 5 - 1 - 1 - 3 - 4] \\
-3 & 2 & 4 & false & [3 - 5 - 1 - 2 - 3 - 4] \\
-2 & 5 & 2 & true &  [3 - 1 - 1 - 2 - 3 - 4] \\
-2 & 5 & 3 & true &  [3 - 1 - 2 - 2 - 3 - 4] \\
-2 & 5 & 4 & true &  [3 - 1 - 2 - 3 - 3 - 4] \\
-2 & 5 & 5 & true &  [3 - 1 - 2 - 3 - 4 - 4] \\
-2 & 5 & 6 & true &  [3 - 1 - 2 - 3 - 4 - 5] \\
-1 & 3 & 1 & true &  [1 - 1 - 2 - 3 - 4 - 5] \\
-1 & 3 & 2 & true &  [1 - 2 - 2 - 3 - 4 - 5] \\
-1 & 3 & 3 & false & [1 - 2 - 3 - 3 - 4 - 5] \\
-\hline
-\end{tabular}
-
-\subsection*{b}
-Der Algorithmus durchläuft das Array von hinten nach vorne und vergleich dabei die Werte.
-Dabei werden die kleineren Werte immer weiter nach vorne geschoben.
-
-\subsection*{c}
-Der Algorithmus ist stabil. Gleiche werte, im Beispiel die 3, vertauschen zu keiner Zeit die
-Plätze. Des weiteren arbeitet der Algorithmus in situ.
-
-\subsection*{d}
-\begin{itemize}
-\item \textit{Best-case}:$$n \cdot O(1) = O(n)$$
-\item \textit{Worst-case:} $$\sum_{i = 1}^{n-1}i =  O(n^2)$$
-\item \textit{Average-case:} $$\sum_{i=1}^{ \frac{n}{2} }i = O(\frac{n^2}{4})= O(n^2)$$
-\end{itemize}
-
-\subsection*{e}
-Da die binäre Suche immer eine Laufzeit von $O(\text{log}(n))$ hat, hätte der ganze Algorithmus somit
-die Laufzeit \textit{best-case = worst-case = average-case =} $O(n \cdot \text{log}(n))$.
 
 \end{document}
