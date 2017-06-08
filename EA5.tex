@@ -35,44 +35,23 @@
 \section*{EA5 - Aufgabe 1}
 
 \subsection*{a}
-Es ist der Aufrufbaum zu konstruieren. Dieser ist in Abbildung \ref{img:abb1} zu sehen.
 \begin{figure}[h]
 	\centering
-	\scalebox{.5}{\input{ea4_1_abb1}}
+	\scalebox{.5}{\input{ea5_2_abb1}}
 	\caption{Ergebnisbaum}
-	\label{img:abb1}
+	\label{img:abb2}
 \end{figure}
-\subsection*{b}
-Die Laufzeit des Algorithmus ist $O(n \text{log}(n))$. Diese Laufzeit setzt sich wiefolgt zusammen. Der Teil
-\textit{divide} hat die Laufzeit $O(1)$, \textit{conquer} ist mit $3T(\frac{n}{3})$ bemessen und \textit{merge}
-benötigt die Laufzeit $O(n)$. Daraus ergibt sich die Laufzeit $O(n)$. Jetzt muss noch die Tiefe des Baumes
-hinzugenommen werden. Diese ist $log_3 (n)$. Da die Basis für die Laufzeit unerheblich ist, kommen wir auf eine
-Gesamtlaufzeit von $O(n\text{log}(n))$ was keine Verbesserung zum normalen Mergesort darstellt.
-
-\section*{EA4 - Aufgabe 2}
-
-\subsection*{a}
-Dazu empfiehlt sich das Heap-Sort Verfahren. Es hat ein besseres \textit{worst-case} Verhalten als Quicksort und ist
-\textit{in situ}.
-
-\subsection*{b}
-Bild
-
-\subsection*{c}
-Die Aufruftiefe beträgt $K \cdot \text{log}(n)$. Quicksort hat somit $O(n \cdot \text{log}(n))$. Das 
-alternative Suchverfahren Heap-Sort hat die Laufzeit $O(n \cdot \text{log}(n))$. Daraus ergibt sich eine Laufzeit
-von $O( n_{quick} \cdot \text{log}(n_{quick}) +  n_{heap} \cdot \text{log}(n_{heap})$. Daraus ergibt sich $O(n \cdot \text{log}(n))$.
-
-
-\section*{EA4 - Aufgabe 3}
-
-\subsection*{a}
-Es wird ein Integer Array $T$ der Größe $k$ erstellt - Laufzeit $O(k)$. Alle Plätze werden mit $0$ belegt - Laufzeit $O(n)$.Es werden die Elemente aus $A$ durchlaufen. Dabei
-wird $T[A[n]] = T[A[n]] + 1$ in jedem Schritt ausgeführt, die geschieht in $O(n)$. Anschließend werden die Ergebnisse von $T$ in $A$ übertragen, was erneut eine
-Laufzeit von $O(n)$ hat. Wir haben eine Gesamtlaufzeit von $O(k+n+n+n)=O(n)$. 
 
 \subsection*{b}
 Diese Laufzeit ist möglich, da es die Schranke $k << n$ gibt. Die untere Schranke $\Omega (n  \cdot \text{log}(n))$ gilt für nicht eingeschränkte Sortierverfahren.
+
+\section*{EA5 - Aufgabe 2}
+
+\subsection*{a}
+
+\subsection*{b}
+Diese Laufzeit ist möglich, da es die Schranke $k << n$ gibt. Die untere Schranke $\Omega (n  \cdot \text{log}(n))$ gilt für nicht eingeschränkte Sortierverfahren.
+
 
 
 \end{document}
